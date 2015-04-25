@@ -7,8 +7,8 @@ class DirSplitter
   end
 
   def split_dcim_files
-    Dir["#{directory}/*.dcim"].each do |file|
-      split_file(file)
+    Dir["#{directory}/*"].each do |file|
+      split_file(file) if File.file?(file)
     end
   end
 
@@ -16,7 +16,7 @@ class DirSplitter
 
   def split_file(file)
     print "Processing #{file}... "
-    output_directory = file.gsub(/\.dcim/, '')
+    output_directory = "#{file}_output"
 
     if File.directory?(output_directory)
       puts "skipped because #{output_directory} already exists."
