@@ -67,7 +67,7 @@ class Splitter
   end
 
   def file_parts
-    @_file_parts ||= file_in_string.split(SEPARATOR)
+    @_file_parts ||= file_in_string.split(SEPARATOR).drop(1)
   end
 end
 
