@@ -55,7 +55,7 @@ class Splitter
 
   def split_to_files
     file_parts.each_with_index do |file_part, index|
-      f = File.new("#{output_dir}/file_#{index}", 'w')
+      f = File.new("#{output_dir}/file_#{index}.dcm", 'w')
       file_content = SEPARATOR + file_part
       f.write(file_content)
       f.close
