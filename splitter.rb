@@ -24,17 +24,17 @@ class DirSplitter
 
     splitter = Splitter.new(file, output_directory)
 
-    if splitter.has_dcim_files?
-      if File.directory?(output_directory)
-        puts "skipped because #{output_directory} already exists."
-      else
+    if File.directory?(output_directory)
+      puts "skipped because #{output_directory} already exists."
+    else
+      if splitter.has_dcim_files?
         FileUtils.mkdir_p(output_directory)
 
         splitter.split_to_files
         puts 'done.'
+      else
+        puts "skipped because it doesn't contains dcim files."
       end
-    else
-      puts "skipped because it doesn't contains dcim files."
     end
   end
 
